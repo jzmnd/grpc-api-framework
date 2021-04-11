@@ -1,0 +1,25 @@
+// greeter.proto
+syntax = "proto3";
+package greeter;
+
+// The request message containing the user's information.
+message GreeterRequest {
+  string name = 1;
+  int32 age = 2;
+  enum Title {
+    NONE = 0;
+    LORD = 1;
+    MONARCH = 2;
+  }
+  Title title = 4;
+}
+
+// The response message.
+message GreeterReply {
+  string greeting = 1;
+}
+
+// The Greeter service definition.
+service Greeter {
+  rpc Reply (GreeterRequest) returns (GreeterReply);
+}
