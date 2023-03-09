@@ -1,4 +1,4 @@
-grpcio==1.36.1
-grpcio-reflection==1.36.1
-grpcio-tools==1.36.1
+grpcio==1.51.3
+grpcio-reflection==1.51.3
+grpcio-tools==1.51.3
 pyYAML==5.4.1

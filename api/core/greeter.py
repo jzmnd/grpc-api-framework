@@ -22,5 +22,5 @@ class Greeter(greeter_pb2_grpc.GreeterServicer):
             name=request.name,
             age=request.age,
         )
-        LOGGER.info("sending a reply")
+        LOGGER.info("sending a reply to %s", request.name)
         return greeter_pb2.GreeterReply(greeting=greeting)
