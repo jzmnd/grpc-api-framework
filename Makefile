@@ -11,6 +11,10 @@ build:
 launch:
 	@docker run -d -p 50051:50051 --name $(CONTAINER) $(IMAGE)
 
+stop:
+	@docker stop $(CONTAINER) > /dev/null && echo "Stopped container $(CONTAINER)" || true
+	@docker rm $(CONTAINER) 2>/dev/null || true
+
 grpc-gen:
 	@python -m grpc_tools.protoc \
 		-I $(MODULE)/proto \
@@ -22,4 +26,4 @@ grpc-gen:
 grpc-clean:
 	@find ./$(MODULE)/generated -type f -name '*_pb2*' -delete
 
-.PHONY: grpc-clean grpc-gen launch-dev
+.PHONY: build launch stop grpc-clean grpc-gen launch-dev
