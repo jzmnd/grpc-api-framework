@@ -1,5 +1,5 @@
 grpcio==1.51.3
-grpc-interceptor==0.15.0
+grpc-interceptor==0.15.3
 grpcio-reflection==1.51.3
 grpcio-tools==1.51.3
-pyYAML==5.4.1
+PyYAML==6.0.1

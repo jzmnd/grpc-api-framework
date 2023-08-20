@@ -1,0 +1,9 @@
+version: v1
+plugins:
+  - plugin: buf.build/protocolbuffers/python
+    out: generated/python
+  - plugin: buf.build/grpc/python
+    out: generated/python
+  - plugin: buf.build/community/pseudomuto-doc
+    out: generated/docs
+    opt: markdown,README-PROTO.md

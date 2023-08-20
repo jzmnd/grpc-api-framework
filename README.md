@@ -24,5 +24,5 @@ make launch
 ## Example request
 
 ```bash
-grpcurl --plaintext -d '{"name": "Alex", "age": 10, "title": "MONARCH"}' localhost:50051 greeter.Greeter.Reply
+grpcurl --plaintext -d '{"name": "Alex", "age": 10, "title": "TITLE_MONARCH"}' localhost:50051 greeter.v1.GreeterService.Reply
 ```

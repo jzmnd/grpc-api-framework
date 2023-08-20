@@ -2,19 +2,19 @@ import logging
 
 from grpc_interceptor.exceptions import InvalidArgument
 
-from generated import greeter_pb2, greeter_pb2_grpc
+from greeter.v1 import greeter_pb2, greeter_pb2_grpc
 
 LOGGER = logging.getLogger(__name__)
 
 
-class Greeter(greeter_pb2_grpc.GreeterServicer):
+class Greeter(greeter_pb2_grpc.GreeterServiceServicer):
 
     """Greeter class"""
 
     title_map = {
-        greeter_pb2.GreeterRequest.Title.NONE: "",
-        greeter_pb2.GreeterRequest.Title.LORD: "Lord ",
-        greeter_pb2.GreeterRequest.Title.MONARCH: "Your Highness ",
+        greeter_pb2.ReplyRequest.Title.TITLE_UNSPECIFIED: "",
+        greeter_pb2.ReplyRequest.Title.TITLE_LORD: "Lord ",
+        greeter_pb2.ReplyRequest.Title.TITLE_MONARCH: "Your Highness ",
     }
 
     async def Reply(self, request, context):
@@ -28,4 +28,4 @@ class Greeter(greeter_pb2_grpc.GreeterServicer):
             age=request.age,
         )
         LOGGER.info("Sending a reply to %s", request.name)
-        return greeter_pb2.GreeterReply(greeting=greeting)
+        return greeter_pb2.ReplyResponse(greeting=greeting)

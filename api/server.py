@@ -8,7 +8,7 @@ from grpc_interceptor import AsyncExceptionToStatusInterceptor, AsyncServerInter
 from grpc_reflection.v1alpha import reflection
 import yaml
 
-from generated import greeter_pb2_grpc, greeter_pb2
+from greeter.v1 import greeter_pb2_grpc, greeter_pb2
 from core.greeter import Greeter
 from config import SERVER_PORT
 
@@ -46,7 +46,7 @@ class Server:
     """gRPC server class"""
 
     service_names = (
-        greeter_pb2.DESCRIPTOR.services_by_name["Greeter"].full_name,
+        greeter_pb2.DESCRIPTOR.services_by_name["GreeterService"].full_name,
         reflection.SERVICE_NAME,
     )
     interceptors = (
@@ -61,7 +61,7 @@ class Server:
     async def run(self):
         """Run the server"""
         server = grpc.aio.server(interceptors=self.interceptors)
-        greeter_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
+        greeter_pb2_grpc.add_GreeterServiceServicer_to_server(Greeter(), server)
         reflection.enable_server_reflection(self.service_names, server)
 
         server.add_insecure_port(self.port)

@@ -3,7 +3,7 @@ CONTAINER := grpc-api-template-server
 MODULE := api
 
 launch-dev:
-	@python $(MODULE)/server.py
+	@PYTHONPATH=$(PYTHONPATH):./generated/python/ python $(MODULE)/server.py
 
 build:
 	@docker build -t $(IMAGE) .
@@ -16,14 +16,10 @@ stop:
 	@docker rm $(CONTAINER) 2>/dev/null || true
 
 grpc-gen:
-	@python -m grpc_tools.protoc \
-		-I $(MODULE)/proto \
-		--python_out=./$(MODULE)/generated \
-		--grpc_python_out=./$(MODULE)/generated \
-		./$(MODULE)/proto/*.proto
-	@sed -i '' -E 's/^import.*_pb2/from . &/' ./$(MODULE)/generated/*.py
+	@buf lint proto
+	@buf generate proto
 
 grpc-clean:
-	@find ./$(MODULE)/generated -type f -name '*_pb2*' -delete
+	@find ./generated -type f -name '*_pb2*' -delete
 
 .PHONY: build launch stop grpc-clean grpc-gen launch-dev
