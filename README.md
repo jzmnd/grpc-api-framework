@@ -1,6 +1,7 @@
 # Modular python gRPC API template
 
-Simple modular template for a python gRPC API
+Simple modular template for a python gRPC API.
+Uses `buf` (https://buf.build) to lint and do code and doc generation.
 
 ## Generate protobuf code
 
