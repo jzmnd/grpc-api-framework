@@ -16,8 +16,8 @@ stop:
 	@docker rm $(CONTAINER) 2>/dev/null || true
 
 grpc-gen:
-	@buf lint proto
-	@buf generate proto
+	@buf lint
+	@buf generate
 
 grpc-clean:
 	@find ./generated -type f -name '*_pb2*' -delete
