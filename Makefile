@@ -2,6 +2,9 @@ IMAGE := grpc-api-template:latest
 CONTAINER := grpc-api-template-server
 MODULE := api
 
+test:
+	@PYTHONPATH=$(PYTHONPATH):./generated/python/ uv run pytest
+
 launch-dev:
 	@PYTHONPATH=$(PYTHONPATH):./generated/python/ uv run python $(MODULE)/server.py
 
