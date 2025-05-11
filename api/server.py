@@ -24,7 +24,6 @@ def read_config(fname):
 
 
 class AsyncLogger(AsyncServerInterceptor):
-
     """Async logger interceptor. Logs all requests and errors."""
 
     async def intercept(self, method, request, context, method_name):
@@ -42,7 +41,6 @@ class AsyncLogger(AsyncServerInterceptor):
 
 
 class Server:
-
     """gRPC server class"""
 
     service_names = (

@@ -8,7 +8,6 @@ LOGGER = logging.getLogger(__name__)
 
 
 class Greeter(greeter_pb2_grpc.GreeterServiceServicer):
-
     """Greeter class"""
 
     title_map = {
