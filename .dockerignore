@@ -1,0 +1,21 @@
+# Docker
+Dockerfile
+
+# Git
+.git
+.gitignore
+
+# Environment
+.venv/
+
+# Logs
+*.log
+
+# MacOS
+*.DS_Store
+
+proto/
+tests/
+generated/docs/
+buf.yaml
+buf.gen.yaml

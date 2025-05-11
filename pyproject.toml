@@ -1,0 +1,18 @@
+[project]
+name = "grpc-api-framework"
+description = "Simple modular template for a python gRPC API."
+version = "0.1.0"
+authors = [
+  { name = "Jez Smith", email = "j.smith.03@cantab.net" },
+]
+readme = "README.md"
+license = { file = "LICENSE.md" }
+requires-python = ">=3.11"
+dependencies = [
+    "grpc-interceptor==0.15.4",
+    "grpcio==1.71.0",
+    "grpcio-reflection==1.71.0",
+    "grpcio-tools==1.71.0",
+    "protobuf==5.29.3",
+    "pyyaml==6.0.2",
+]

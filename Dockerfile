@@ -1,20 +1,19 @@
 FROM python:3.11-slim
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 LABEL maintainer="Jez Smith"
-
-COPY ./requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 ENV SRC_DIR=api
 ENV GEN_DIR=generated
 ENV CODE_DIR=/opt/grpc-api-framework
-
-COPY ./${SRC_DIR} ${CODE_DIR}/${SRC_DIR}
-COPY ./${GEN_DIR} ${CODE_DIR}/${GEN_DIR}
 WORKDIR ${CODE_DIR}
+
+COPY ./ ./
+
+RUN uv sync --locked
 
 ENV PYTHONPATH="${PYTHONPATH}:./${GEN_DIR}/python/"
 
 EXPOSE 50051
 
-CMD ["python", "api/server.py"]
+CMD ["uv", "run", "python", "api/server.py"]
