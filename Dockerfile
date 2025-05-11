@@ -10,7 +10,7 @@ WORKDIR ${CODE_DIR}
 
 COPY ./ ./
 
-RUN uv sync --locked
+RUN uv sync --locked --no-dev
 
 ENV PYTHONPATH="${PYTHONPATH}:./${GEN_DIR}/python/"
 
