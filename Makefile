@@ -3,7 +3,7 @@ CONTAINER := grpc-api-template-server
 MODULE := api
 
 launch-dev:
-	@PYTHONPATH=$(PYTHONPATH):./generated/python/ python $(MODULE)/server.py
+	@PYTHONPATH=$(PYTHONPATH):./generated/python/ uv run python $(MODULE)/server.py
 
 build:
 	@docker build -t $(IMAGE) .
